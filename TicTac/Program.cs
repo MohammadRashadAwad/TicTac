@@ -1,45 +1,53 @@
-﻿class Program
+﻿using System;
+
+class Program
 {
-    
+
+   static char[] baseArray = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    static List<int> PlayerOneChoices = new List<int>();
+    static List<int> PlayerTwoChoices = new List<int>();
+
+
     static void Main(string[] args)
     {
-        char[] arr = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-        //  int[] choiceIndex = new int[arr.Length];
+        //int[] userIndexes = new int[5];
+        //int[] computerIndexes = new int[5];
+        //char userPlayer = 'X';
 
-        int n = 1;
-
-        while (n<9)
+        while (true)
         {
-            execute(arr);
-             n++;
+            execute();
         }
     }
-    static void execute(char[] arr)
+
+
+    static void execute()
     {
-        int count = 0;
-        Console.WriteLine("Player1:X and Computer:O");
+       // Console.WriteLine("Player1:X and Computer:O");
         Console.Clear();
-        display(arr);
+        display(baseArray);
         Console.WriteLine("Enter choice");
         var choice = int.Parse(Console.ReadLine());
+
         var index = --choice;
-       
-        arr[choice] = 'X';
+        PlayerOneChoices.Add(index);
+
+        baseArray[choice] = 'X';
         Console.Clear();
-        display(arr);
-        for (int i=0; i<arr.Length; i++)
+      //  display(arr);
+        for (int i = 0; i < baseArray.Length; i++)
         {
-            if(i == index)
+            if (i == index)
             {
-                arr[GenerateNumber(index)] = 'O';
+                baseArray[GenerateNumber(index)] = 'O';
                 Console.Clear();
-                display(arr);
+                display(baseArray);
             }
         }
-        
+        AvailableChoices();
 
 
-        
+
 
     }
     static void display(char[] arr)
@@ -56,9 +64,28 @@
 
     static int GenerateNumber(int start)
     {
-       return new Random().Next(start,9);
+        return new Random().Next(start, 9);
     }
+
+
+    static int PlayerTwo()
+    {
+
+        return 0;
+    }
+
+    static List<int> AvailableChoices()
+    {
+        var arr = baseArray
+            .Where((w, index) => !PlayerOneChoices.Contains(index) && !PlayerTwoChoices.Contains(index)).ToList();
+        //  if (PlayerOneChoices)
+
+        return new List<int>();
+    }
+    
 }
+
+
 
 
 
