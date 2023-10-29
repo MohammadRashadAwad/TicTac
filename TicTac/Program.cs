@@ -3,17 +3,13 @@
 class Program
 {
 
-   static char[] baseArray = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    static char[] baseArray = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
     static List<int> PlayerOneChoices = new List<int>();
     static List<int> PlayerTwoChoices = new List<int>();
 
 
     static void Main(string[] args)
     {
-        //int[] userIndexes = new int[5];
-        //int[] computerIndexes = new int[5];
-        //char userPlayer = 'X';
-
         while (true)
         {
             execute();
@@ -42,12 +38,11 @@ class Program
                 baseArray[GenerateNumber(index)] = 'O';
                 Console.Clear();
                 display(baseArray);
+
             }
+
         }
         AvailableChoices();
-
-
-
 
     }
     static void display(char[] arr)
@@ -70,7 +65,6 @@ class Program
 
     static int PlayerTwo()
     {
-
         return 0;
     }
 
@@ -79,7 +73,6 @@ class Program
         var arr = baseArray
             .Where((w, index) => !PlayerOneChoices.Contains(index) && !PlayerTwoChoices.Contains(index)).ToList();
         //  if (PlayerOneChoices)
-
         return new List<int>();
     }
     
